@@ -18,11 +18,8 @@ export const createReservaciones = async (req, res) =>{
     .input('MesaID', sql.Int, req.body.MesaID)
     .input('FechaReservacion', sql.DateTime, req.body.FechaReservacion)
     .input('HoraInicio', sql.DateTime, req.body.HoraInicio)
-    .input('HoraFin', sql.DateTime, req.body.HoraFin)
     .input('ClienteID', sql.Int, req.body.ClienteID)
     .input('Observaciones', sql.NVarChar(MAX), req.body.Observaciones)
-
-    .query('Insert into Reservaciones (MesaID, FechaReservacion, HoraInicio, HoraFin, ClienteID, Observaciones) values (@MesaID, @FechaReservacion, @HoraInicio, @HoraFin, @ClienteID, @Observaciones)')
-
+    .query('Insert into Reservaciones (MesaID, FechaReservacion, HoraInicio, ClienteID, Observaciones) values (@MesaID, @FechaReservacion, @HoraInicio, @ClienteID, @Observaciones)')
     res.json(result)
 }
