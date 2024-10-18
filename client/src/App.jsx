@@ -1,15 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
-
 import Home from './pages/Home';
 import AboutUs from './pages/AboutUs';
 import Dishes from './pages/Dishes';
 import Reservation from './pages/Reservation';
-import Auth from './pages/Auth';
 import ContactUs from './pages/ContactUs';
-
-
 
 const App = () => {
   return (
@@ -22,7 +18,6 @@ const App = () => {
           <Route path="/sobre-nosotros" element={<AboutUs />} />
           <Route path="/platos" element={<Dishes />} />
           <Route path="/reserva-de-mesa" element={<Reservation />} />
-          <Route path="/auth/*" element={<Auth />} />
           <Route path="/contactanos" element={<ContactUs />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -21,11 +21,7 @@ const Header = () => {
           <li>
             <Link to="/contactanos">Contáctanos</Link>
           </li>
-          <li>
-            <Link to="/auth">
-              <button className="login-button">Login/Regístrate</button>
-            </Link>
-          </li>
+          asasasa
         </ul>
       </nav>
     </header>
