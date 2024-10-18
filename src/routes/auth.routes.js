@@ -5,6 +5,7 @@ import { validateSchema } from '../middlewares/validator.middleware.js';
 import { registerSchema, loginSchema } from '../schemas/auth.schema.js';
 
 const router = Router();
+/* Modificar para que este acorde a SQL */
 
 router.post('/register', validateSchema(registerSchema), register);
 
