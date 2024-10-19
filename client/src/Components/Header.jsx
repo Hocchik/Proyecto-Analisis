@@ -1,30 +1,35 @@
 import { Link } from 'react-router-dom';
-import './Header.css';
 
 const Header = () => {
   return (
-    <header className="header">
-      <nav className="navbar">
-        <div className="logo">
-          <Link to="/">Pizzería Michelina</Link>
-        </div>
-        <ul className="nav-links">
-          <li>
-            <Link to="/sobre-nosotros">Sobre Nosotros</Link>
-          </li>
-          <li>
-            <Link to="/platos">Platos</Link>
-          </li>
-          <li>
-            <Link to="/reserva-de-mesa">Reserva de Mesa</Link>
-          </li>
-          <li>
-            <Link to="/contactanos">Contáctanos</Link>
-          </li>
-          asasasa
-        </ul>
-      </nav>
-    </header>
+    <>
+      <header>
+        <nav className="bg-black border-gray-200 px-4 lg:px-8 py-8">
+          <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+            <a href="https://flowbite.com" className="flex items-center">
+              <img src="../Img/Logooo.png" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
+              <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"><Link to="/">D'Peñas</Link></span>
+            </a>
+            <div className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
+              <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+                <li>
+                  <a href="#" className="block py-2 pr-4 pl-3 text-white rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white" aria-current="page"><Link to="/sobre-nosotros">Sobre Nosotros</Link></a>
+                </li>
+                <li>
+                  <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"><Link to="/platos">Platos</Link></a>
+                </li>
+                <li>
+                  <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"><Link to="/reserva-de-mesa">Reserva de Mesa</Link></a>
+                </li>
+                <li>
+                  <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"><Link to="/contactanos">Contáctanos</Link></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header >
+    </>
   );
 };
 
