@@ -1,30 +1,45 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
-import Home from './pages/Home';
 import AboutUs from './pages/AboutUs';
 import Dishes from './pages/Dishes';
 import Reservation from './pages/Reservation';
 import ContactUs from './pages/ContactUs';
+import Login from './pages/Login';  // Importar componente Login
+import Register from './pages/Register';  // Importar componente Register
+import { Outlet } from 'react-router-dom';  // Importar Outlet
 
 const App = () => {
   return (
     <Router>
-      <Header />
+      <Routes>
+        {/* Rutas que NO usan Header y Footer */}
+        <Route path="/login" element={<Login />} /> {/* Ruta de Login */}
+        <Route path="/register" element={<Register />} /> {/* Ruta de Register */}
 
-      <main style={{ minHeight: '80vh', padding: '20px' }}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/sobre-nosotros" element={<AboutUs />} />
+        {/* Rutas que SÍ usan Header y Footer */}
+        <Route element={<Layout />}>
+          <Route path="/" element={<AboutUs />} />
           <Route path="/platos" element={<Dishes />} />
           <Route path="/reserva-de-mesa" element={<Reservation />} />
           <Route path="/contactanos" element={<ContactUs />} />
           <Route path="*" element={<NotFound />} />
-        </Routes>
-      </main>
-
-      <Footer />
+        </Route>
+      </Routes>
     </Router>
+  );
+};
+
+// Layout con Header y Footer
+const Layout = () => {
+  return (
+    <>
+      <Header />
+      <main style={{ minHeight: '80vh', padding: '20px' }}>
+        <Outlet /> {/* Aquí se renderizan las rutas hijas */}
+      </main>
+      <Footer />
+    </>
   );
 };
 

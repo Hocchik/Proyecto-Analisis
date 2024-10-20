@@ -1,6 +1,6 @@
 const ContactUs = () => {
   return (
-    <div className="flex items-center justify-center p-12">
+    <div className="flex items-center justify-center p-12 mt-16"> {/* Añadido margin-top aquí */}
       <div className="mx-auto w-full max-w-[550px] bg-cyan-100 p-6 rounded-lg shadow-md">
         <form method="POST">
           <div className="mb-5">
@@ -65,7 +65,7 @@ const ContactUs = () => {
           </div>
           <div className="flex justify-center">
             <button
-              type="submit" // Agregado el tipo de botón
+              type="submit"
               className="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none"
             >
               Submit

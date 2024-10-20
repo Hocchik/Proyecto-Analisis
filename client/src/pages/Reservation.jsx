@@ -28,7 +28,7 @@ function Reservation() {
     };
 
     return (
-        <div className="flex items-center justify-center h-screen bg-gray-900 text-white">
+        <div className="flex items-center justify-center h-screen bg-gray-900 text-white mt-16"> {/* Añadido margin-top aquí */}
             <form className="bg-gray-800 p-8 rounded-lg shadow-lg w-96" onSubmit={handleSubmit}>
                 <h2 className="text-2xl font-bold mb-4 text-center">Realiza tu reserva</h2>
 

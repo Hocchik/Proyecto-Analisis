@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const AboutUs = () => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen mt-16"> {/* Añadido margin-top aquí */}
       <div className="bg-indigo-500 text-white text-center py-4">
         <h1 className="text-3xl font-bold">D'Peñas Cevichería</h1>
       </div>
