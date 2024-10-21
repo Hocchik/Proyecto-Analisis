@@ -20,7 +20,7 @@ const App = () => {
         {/* Rutas que SÍ usan Header y Footer */}
         <Route element={<Layout />}>
           <Route path="/" element={<AboutUs />} />
-          <Route path="/platos" element={<Dishes />} />
+          <Route path="/ceviches" element={<Dishes />} />
           <Route path="/reserva-de-mesa" element={<Reservation />} />
           <Route path="/contactanos" element={<ContactUs />} />
           <Route path="*" element={<NotFound />} />
