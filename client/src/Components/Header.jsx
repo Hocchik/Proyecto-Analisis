@@ -55,27 +55,8 @@ const Header = () => {
 
           {/* Reserva de Mesa con desplegable */}
           <li className="relative group">
-            <button
-              className="hover:text-cyan-400 transition duration-200 flex items-center space-x-2"
-              onClick={() => toggleMenu('reserva')}
-            >
-              <span>Reservación</span>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            {activeMenu === 'reserva' && (
-              <ul className="absolute top-12 left-0 bg-white text-black rounded-lg shadow-lg py-2 w-48 space-y-2 transition duration-300 transform translate-y-2 group-hover:translate-y-0">
-                <li className="hover:bg-gray-100 px-4 py-2 rounded-md">
-                  <Link to="/reserva-de-mesa" onClick={closeMenu}>Reservar Mesa</Link>
-                </li>
-                <li className="hover:bg-gray-100 px-4 py-2 rounded-md">
-                  <Link to="/mis-reservas" onClick={closeMenu}>Mis Reservas</Link>
-                </li>
-              </ul>
-            )}
+            <Link to="/reserva-de-mesa" className="hover:text-cyan-400 transition duration-200" onClick={closeMenu}>Reservar Mesa</Link>
           </li>
-
           <li className="relative group">
             <Link to="/contactanos" className="hover:text-cyan-400 transition duration-200" onClick={closeMenu}>Contáctanos</Link>
           </li>

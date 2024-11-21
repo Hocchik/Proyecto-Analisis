@@ -5,9 +5,13 @@ import AboutUs from './pages/AboutUs';
 import Dishes from './pages/Dishes';
 import Reservation from './pages/Reservation';
 import ContactUs from './pages/ContactUs';
-import Login from './pages/Login';  // Importar componente Login
-import Register from './pages/Register';  // Importar componente Register
-import { Outlet } from 'react-router-dom';  // Importar Outlet
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Piqueos from './pages/Piqueos';
+import Drinks from './pages/Drinks';
+import Carte from './pages/Carte';
+
+import { Outlet } from 'react-router-dom';
 
 const App = () => {
   return (
@@ -23,6 +27,9 @@ const App = () => {
           <Route path="/ceviches" element={<Dishes />} />
           <Route path="/reserva-de-mesa" element={<Reservation />} />
           <Route path="/contactanos" element={<ContactUs />} />
+          <Route path="/piqueos" element={<Piqueos />} />
+          <Route path="/bebidas" element={<Drinks />} />
+          <Route path="/carta" element={<Carte />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
