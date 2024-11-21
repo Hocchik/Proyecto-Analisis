@@ -1,55 +1,34 @@
 import React from 'react';
 
-const dishesData = [
+const carteData = [
     {
         id: 1,
-        title: "Apple AirPods",
-        price: "$95.00",
-        description: "With plenty of talk and listen time, voice-activated Siri access, and an available wireless charging case.",
-        image: "https://images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80"
+        title: "Ceviche Clásico",
+        price: "$15.00",
+        description: "Ceviche de pescado fresco marinado en jugo de limón y ají limo.",
+        image: "https://images.unsplash.com/photo-1591337678535-29d9cf1f3474?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
     },
     {
         id: 2,
-        title: "Samsung Galaxy Buds",
-        price: "$85.00",
-        description: "Enjoy high-quality audio with long-lasting battery life and a sleek design.",
+        title: "Arroz con Mariscos",
+        price: "$18.00",
+        description: "Plato tradicional de arroz sazonado con mariscos frescos y especias.",
         image: ""
     },
     {
         id: 3,
-        title: "Sony Headphones",
-        price: "$120.00",
-        description: "Noise-cancelling over-ear headphones with superior sound quality.",
+        title: "Jalea Mixta",
+        price: "$20.00",
+        description: "Fritura de pescado y mariscos acompañada de salsa criolla y yuca.",
         image: ""
     },
-    {
-        id: 4,
-        title: "Beats Headphones",
-        price: "$150.00",
-        description: "Experience powerful sound and noise cancellation with Beats headphones.",
-        image: ""
-    },
-    {
-        id: 5,
-        title: "Bose SoundSport",
-        price: "$110.00",
-        description: "Stay active with these comfortable and water-resistant sport earphones.",
-        image: ""
-    },
-    {
-        id: 6,
-        title: "JBL Bluetooth Speaker",
-        price: "$75.00",
-        description: "Portable Bluetooth speaker with powerful sound and long battery life.",
-        image: ""
-    }
 ];
 
-const Dishes = () => {
+const Carte = () => {
     return (
-        <div className="flex justify-center items-center min-h-screen mt-16"> {/* Añadido margin-top aquí */}
+        <div className="flex justify-center items-center min-h-screen mt-16">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1200px] mx-auto">
-                {dishesData.map((dish) => (
+                {carteData.map((dish) => (
                     <div key={dish.id} className="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full transform transition-transform duration-300 hover:scale-105">
                         <div className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white bg-clip-border rounded-xl h-96">
                             <img
@@ -85,4 +64,4 @@ const Dishes = () => {
     );
 };
 
-export default Dishes;
+export default Carte;

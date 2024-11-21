@@ -1,55 +1,74 @@
 import { Link } from 'react-router-dom';
-import './Header.css';
+import { useState } from 'react';
 
 const Header = () => {
+  const [activeMenu, setActiveMenu] = useState(null);
+
+  const toggleMenu = (menu) => {
+    setActiveMenu(activeMenu === menu ? null : menu);
+  };
+
+  const closeMenu = () => {
+    setActiveMenu(null);
+  };
+
   return (
+    <header className="fixed top-0 left-0 w-full bg-black shadow-lg flex items-center justify-between px-8 py-4 z-50">
+      <h1 className="text-2xl font-bold text-white">
+        <Link to="/" className="hover:text-cyan-400 transition duration-200">D'Peñas</Link>
+      </h1>
 
-<header>
-<nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
-    <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-        <a className="flex items-center">
-        <Link to="/">Pizzería Michelina</Link>
-            <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
-            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
-        </a>
-        <div className="flex items-center lg:order-2">
-            <a href="#" className="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Log in</a>
-            <a href="#" className="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">Get started</a>
-            <button data-collapse-toggle="mobile-menu-2" type="button" className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
-                <span className="sr-only">Open main menu</span>
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path></svg>
-                <svg className="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+      <nav className="nav font-semibold text-lg text-white">
+        <ul className="flex items-center space-x-8">
+          <li className="relative group">
+            <Link to="/" className="hover:text-cyan-400 transition duration-200" onClick={closeMenu}>Sobre Nosotros</Link>
+          </li>
+
+          {/* Carta con menú desplegable */}
+          <li className="relative group">
+            <button
+              className="hover:text-cyan-400 transition duration-200 flex items-center space-x-2"
+              onClick={() => toggleMenu('carta')}
+            >
+              <span>Carta</span>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+              </svg>
             </button>
-        </div>
-        <div className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
-            <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-                
-                <li>
-                    <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
-                    <Link to="/sobre-nosotros">Sobre Nosotros</Link>
-                    </a>
+            {activeMenu === 'carta' && (
+              <ul className="absolute top-12 left-0 bg-white text-black rounded-lg shadow-lg py-2 w-48 space-y-2 transition duration-300 transform translate-y-2 group-hover:translate-y-0">
+                <li className="hover:bg-gray-100 px-4 py-2 rounded-md">
+                  <Link to="/ceviches" onClick={closeMenu}>Ceviches</Link>
                 </li>
-                <li>
-                    <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
-                    <Link to="/platos">Platos</Link>
-                    </a>
+                <li className="hover:bg-gray-100 px-4 py-2 rounded-md">
+                  <Link to="/piqueos" onClick={closeMenu}>Piqueos Típicos</Link>
                 </li>
-                <li>
-                    <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
-                    <Link to="/reserva-de-mesa">Reserva de Mesa</Link>
-                    </a>
+                <li className="hover:bg-gray-100 px-4 py-2 rounded-md">
+                  <Link to="/carta" onClick={closeMenu}>Platos a la Carta</Link>
                 </li>
-                <li>
-                    <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
-                    <Link to="/contactanos">Contáctanos</Link>
-                    </a>
+                <li className="hover:bg-gray-100 px-4 py-2 rounded-md">
+                  <Link to="/bebidas" onClick={closeMenu}>Bebidas</Link>
                 </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-</header>
+              </ul>
+            )}
+          </li>
 
+          {/* Reserva de Mesa con desplegable */}
+          <li className="relative group">
+            <Link to="/reserva-de-mesa" className="hover:text-cyan-400 transition duration-200" onClick={closeMenu}>Reservar Mesa</Link>
+          </li>
+          <li className="relative group">
+            <Link to="/contactanos" className="hover:text-cyan-400 transition duration-200" onClick={closeMenu}>Contáctanos</Link>
+          </li>
+        </ul>
+      </nav>
+
+      <div className="flex items-center space-x-4">
+        <Link to="/login" className="text-white hover:bg-cyan-400 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-base px-4 lg:px-5 py-2 lg:py-2.5 mr-2">
+          Log in
+        </Link>
+      </div>
+    </header>
   );
 };
 
