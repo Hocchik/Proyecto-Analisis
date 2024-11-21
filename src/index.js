@@ -1,5 +1,4 @@
 import app from './app.js'
-import {connectDB} from './db.js'
 import {getConnection} from './database/connection.js'
 
 getConnection();
