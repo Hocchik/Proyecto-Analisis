@@ -24,7 +24,7 @@ const carteData = [
     },
 ];
 
-const Carte = () => {
+const CartaPage = () => {
     return (
         <div className="flex justify-center items-center min-h-screen mt-16">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1200px] mx-auto">
@@ -64,4 +64,4 @@ const Carte = () => {
     );
 };
 
-export default Carte;
+export default CartaPage;

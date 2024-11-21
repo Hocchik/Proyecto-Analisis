@@ -15,17 +15,18 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 w-full bg-black shadow-lg flex items-center justify-between px-8 py-4 z-50">
       <h1 className="text-2xl font-bold text-white">
-        <Link to="/" className="hover:text-cyan-400 transition duration-200">D'Peñas</Link>
+        <Link to="/home" className="hover:text-cyan-400 transition duration-200">D'Peñas</Link>
       </h1>
 
       <nav className="nav font-semibold text-lg text-white">
+        
         <ul className="flex items-center space-x-8">
           <li className="relative group">
-            <Link to="/" className="hover:text-cyan-400 transition duration-200" onClick={closeMenu}>Sobre Nosotros</Link>
+            <Link to="/home" className="hover:text-cyan-400 transition duration-200" onClick={closeMenu}>Home</Link>
           </li>
-
           {/* Carta con menú desplegable */}
           <li className="relative group">
+            
             <button
               className="hover:text-cyan-400 transition duration-200 flex items-center space-x-2"
               onClick={() => toggleMenu('carta')}
@@ -38,16 +39,16 @@ const Header = () => {
             {activeMenu === 'carta' && (
               <ul className="absolute top-12 left-0 bg-white text-black rounded-lg shadow-lg py-2 w-48 space-y-2 transition duration-300 transform translate-y-2 group-hover:translate-y-0">
                 <li className="hover:bg-gray-100 px-4 py-2 rounded-md">
-                  <Link to="/ceviches" onClick={closeMenu}>Ceviches</Link>
+                  <Link to="/home/carta/ceviches" onClick={closeMenu}>Ceviches</Link>
                 </li>
                 <li className="hover:bg-gray-100 px-4 py-2 rounded-md">
-                  <Link to="/piqueos" onClick={closeMenu}>Piqueos Típicos</Link>
+                  <Link to="/home/carta/piqueos" onClick={closeMenu}>Piqueos Típicos</Link>
                 </li>
                 <li className="hover:bg-gray-100 px-4 py-2 rounded-md">
-                  <Link to="/carta" onClick={closeMenu}>Platos a la Carta</Link>
+                  <Link to="/home/carta/platosCarta" onClick={closeMenu}>Platos a la Carta</Link>
                 </li>
                 <li className="hover:bg-gray-100 px-4 py-2 rounded-md">
-                  <Link to="/bebidas" onClick={closeMenu}>Bebidas</Link>
+                  <Link to="/home/carta/bebidas" onClick={closeMenu}>Bebidas</Link>
                 </li>
               </ul>
             )}
@@ -55,10 +56,10 @@ const Header = () => {
 
           {/* Reserva de Mesa con desplegable */}
           <li className="relative group">
-            <Link to="/reserva-de-mesa" className="hover:text-cyan-400 transition duration-200" onClick={closeMenu}>Reservar Mesa</Link>
+            <Link to="/home/reserva-de-mesa" className="hover:text-cyan-400 transition duration-200" onClick={closeMenu}>Reservar Mesa</Link>
           </li>
           <li className="relative group">
-            <Link to="/contactanos" className="hover:text-cyan-400 transition duration-200" onClick={closeMenu}>Contáctanos</Link>
+            <Link to="/home/contactanos" className="hover:text-cyan-400 transition duration-200" onClick={closeMenu}>Contáctanos</Link>
           </li>
         </ul>
       </nav>
