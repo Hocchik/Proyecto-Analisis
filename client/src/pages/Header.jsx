@@ -58,7 +58,7 @@ const Header = () => {
 
           {/* Reservar Mesa */}
           <li className="relative group">
-            <Link to="/home/reserva-de-mesa" className="hover:text-cyan-400 transition duration-200" onClick={closeMenu}>Reservar Mesa</Link>
+            <Link to="/home/reservaMesa" className="hover:text-cyan-400 transition duration-200" onClick={closeMenu}>Reservar Mesa</Link>
           </li>
 
           {/* Contáctanos */}
