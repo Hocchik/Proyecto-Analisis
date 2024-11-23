@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Reservation() {
+const NumeroPersonas=()=> {
     const [peopleCount, setPeopleCount] = useState(1);
     const [selectedDate, setSelectedDate] = useState('');
     const [selectedTime, setSelectedTime] = useState('');
@@ -107,4 +107,4 @@ function Reservation() {
     );
 }
 
-export default Reservation;
+export default NumeroPersonas;

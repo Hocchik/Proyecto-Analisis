@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import React from 'react';
 import SteeperReserva from './Components/ReservadeMesa/SteeperReserva';
 import FechaHora from './pages/ReservacionPag/FechaHora';
@@ -7,21 +7,19 @@ import Detalles from './pages/ReservacionPag/Detalles';
 import Confirmacion from './pages/ReservacionPag/Confirmacion';
 import NumeroPersonas from './pages/ReservacionPag/NumeroPersonas';
 
-const ReservadeMesa = () => {
-  return (
-    <>
-    <SteeperReserva/>
-    <Routes>  
-        <Route path="/" element={NumeroPersonas} /> 
-        <Route path="/numeroPersonas" element={NumeroPersonas} /> 
-        <Route path="/fechaHora" element={FechaHora} />
-        <Route path="/numeroMesas" element={NumeroMesas} />
-        <Route path="/detalles" element={Detalles} />
-        <Route path="/confirmacion" element={Confirmacion} />
-    </Routes>
-    </>
-      
-  );
+const ReservaMesa = () => {
+    return (
+        <>
+            <SteeperReserva />
+            <Routes>
+                <Route path="/numeroPersonas" element={<NumeroPersonas />} />
+                <Route path="/fechaHora" element={<FechaHora />} />
+                <Route path="/numeroMesas" element={<NumeroMesas />} />
+                <Route path="/detalles" element={<Detalles />} />
+                <Route path="/confirmacion" element={<Confirmacion />} />
+            </Routes>
+        </>
+    );
 };
 
-export default ReservadeMesa;
+export default ReservaMesa;

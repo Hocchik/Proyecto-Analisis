@@ -2,7 +2,7 @@ import React from 'react'
 
 const FechaHora = () => {
   return (
-    <div>FechaHora</div>
+    <div className='m-20'>FechaHora</div>
   )
 }
 
