@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { Outlet } from "react-router-dom";
 
-const SteeperReserva = () => {
+const SteeperReserva = ({paso}) => {
   const [pasoActual, setPasoActual] = useState(1);
 
+  
   // Nombres y descripciones de los pasos
   const pasos = [
     { nombre: "Cantidad de Personas", descripcion: "Completa tus datos personales." },
@@ -69,6 +71,7 @@ const SteeperReserva = () => {
           );
         })}
       </div>
+      <Outlet/>
 
       <div className="flex justify-between mt-32">
         <button

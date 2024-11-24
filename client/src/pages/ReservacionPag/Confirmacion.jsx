@@ -12,6 +12,9 @@ const FormularioUsuario = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const navigate = useNavigate(); // Hook para redirección
 
+  const handleAnterior = () => {
+    navigate('/home/reservaMesa/detalles');
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -49,6 +52,7 @@ const FormularioUsuario = () => {
   };
 
   return (
+    <>
     <div className="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-md">
       <h2 className="text-2xl font-bold text-center mb-6">Formulario de Usuario</h2>
 
@@ -162,6 +166,16 @@ const FormularioUsuario = () => {
         </div>
       )}
     </div>
+    <button
+    onClick={handleAnterior}
+    className="select-none rounded-lg bg-gray-900 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+    type="button"
+
+    >
+        Anterior
+    </button>
+    
+    </>
   );
 };
 

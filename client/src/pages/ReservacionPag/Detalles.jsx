@@ -1,9 +1,19 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const FormularioReservacion = () => {
   const [requerimiento, setRequerimiento] = useState("");
   const [restriccion, setRestriccion] = useState("");
   const [errores, setErrores] = useState({});
+  const navigate = useNavigate();
+
+    const handleSiguiente = () => {
+        navigate('/home/reservaMesa/confirmacion');     
+    };
+
+    const handleAnterior = () => {
+        navigate('/home/reservaMesa/numeroMesas');
+    };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -74,12 +84,22 @@ const FormularioReservacion = () => {
         </div>
 
         <div className="text-center">
-          <button
-            type="submit"
-            className="bg-orange-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
-          >
-            Enviar
-          </button>
+                <button
+            onClick={handleAnterior}
+            className="select-none rounded-lg bg-gray-900 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            type="button"
+
+            >
+                Anterior
+            </button>
+            <button
+                onClick={handleSiguiente}
+                className="select-none rounded-lg bg-gray-900 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                type="button"
+
+            >
+                Siguiente
+            </button>
         </div>
       </form>
     </div>

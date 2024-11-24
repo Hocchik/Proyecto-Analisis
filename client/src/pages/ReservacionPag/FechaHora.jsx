@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { useNavigate } from "react-router-dom";
+
 const CalendarioReservas = () => {
   const [fechaSeleccionada, setFechaSeleccionada] = useState(null);
   const [mesActual, setMesActual] = useState(0);
@@ -35,6 +37,15 @@ const CalendarioReservas = () => {
 
   const horarios = ["12:00 pm", "12:30 pm", "13:00 pm", "13:30 pm", "14:00 pm"];
 
+  const navigate = useNavigate();
+
+  const handleSiguiente = () => {
+      navigate('/home/reservaMesa/numeroMesas');     
+  };
+
+  const handleAnterior = () => {
+      navigate('/home/reservaMesa/numeroPersonas');
+  };
 
   const renderMes = () => {
     const { nombre, dias } = meses[mesActual];
@@ -63,6 +74,7 @@ const CalendarioReservas = () => {
   };
 
   return (
+    <>
     <div className="min-h-screen p-8 bg-gray-100">
       <h1 className="text-black text-2xl font-bold mb-4">Selecciona una fecha</h1>
       <div className="flex items-center justify-between mb-8">
@@ -102,6 +114,25 @@ const CalendarioReservas = () => {
         </div>
       </div>
     </div>
+    <div>
+    <button
+          onClick={handleAnterior}
+          className="select-none rounded-lg bg-gray-900 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          type="button"
+
+      >
+          Anterior
+      </button>
+      <button
+          onClick={handleSiguiente}
+          className="select-none rounded-lg bg-gray-900 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          type="button"
+
+      >
+          Siguiente
+      </button>
+    </div>
+    </>
   );
 };
 
