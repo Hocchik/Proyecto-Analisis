@@ -1,6 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const SectionOne = () => {
+    const navigate = useNavigate();
+    const irmenu = () => {
+        navigate("/home/carta/ceviches");
+    };
     return (
         <div className="py-10 bg-amber-700 ">
             <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
@@ -17,7 +22,9 @@ const SectionOne = () => {
                     <p className="text-lg md:text-xl mb-4">
                         Un lugar para conectar, compartir y disfrutar en familia.
                     </p>
-                    <button className="hover:opacity-90 bg-white text-black font-bold py-2 px-4 rounded-md">
+                    <button
+                        onClick={irmenu}
+                        className="hover:opacity-90 bg-white text-black font-bold py-2 px-4 rounded-md">
                         Mira nuestro menú
                     </button>
                 </div>

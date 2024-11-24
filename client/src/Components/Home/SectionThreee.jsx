@@ -1,6 +1,10 @@
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 const SectionTwo = () => {
+    const navigate = useNavigate();
+    const reservarmesa = () => {
+        navigate("/home/reservaMesa");
+    };
     return (
         <div className="py-10 bg-orange-900">
             <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
@@ -9,7 +13,9 @@ const SectionTwo = () => {
                     <p className="text-lg md:text-xl mb-4">
                         Ven y disfruta de nuestros exquisitos platillos elaborados con ingredientes frescos.
                     </p>
-                    <button className="hover:opacity-90 bg-white text-black font-bold py-2 px-4 rounded-md">
+                    <button
+                        onClick={reservarmesa}
+                        className="hover:opacity-90 bg-white text-black font-bold py-2 px-4 rounded-md">
                         Reserva tu mesa
                     </button>
                 </div>

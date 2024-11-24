@@ -1,12 +1,17 @@
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInstagram, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { Link } from 'react-router-dom';
+
 const Footer = () => {
+
+
   return (
     <>
-      <footer
-        className="bg-black text-white text-center dark:bg-black dark:text-white lg:text-left">
-        <div
-          className="flex items-center justify-center border-b-2 border-neutral-200 p-6 dark:border-white/10 lg:justify-between">
+      <footer className="bg-black text-white text-center dark:bg-black dark:text-white lg:text-left">
+        <div className="flex items-center justify-center border-b-2 border-neutral-200 p-6 dark:border-white/10 lg:justify-between">
           <div className="me-12 hidden lg:block">
-            <span>Get connected with us on social networks:</span>
+            <span>Conéctate con nosotros en nuestras redes sociales:</span>
           </div>
           <div className="flex justify-center">
             <a href="#!" className="me-6 [&>svg]:h-4 [&>svg]:w-4">
@@ -65,133 +70,57 @@ const Footer = () => {
             </a>
           </div>
         </div>
-
         <div className="mx-6 py-10 text-center md:text-left">
-          <div className="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            <div className="">
-              <h6
-                className="mb-4 flex items-center justify-center font-semibold uppercase md:justify-start">
-                Logo
-              </h6>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+
+            <div>
+              <h6 className="mb-4 font-semibold uppercase">D'Peñas</h6>
               <p>
-                Aquí puede ir una descripción corta de tu compañía o marca. Agrega algo que destaque los valores o misión.
+                Reserva tu mesa fácilmente y disfruta de los sabores más frescos y auténticos de nuestra cocina peruana. Con nuestro sistema de reservas en línea, asegurar tu lugar nunca fue tan sencillo. Ven y vive una experiencia gastronómica única, con un servicio de calidad y un ambiente acogedor para disfrutar en familia o con amigos.              </p>
+            </div>
+
+            <div className="text-center md:text-center md:col-start-2">
+              <h6 className="mb-4 font-semibold uppercase">Enlaces útiles</h6>
+              <p className="mb-4">
+                <Link to="/home" className="text-neutral-600 dark:text-neutral-200">
+                  Home
+                </Link>
+              </p>
+              <p className="mb-4">
+                <Link to="/home/carta/ceviches" className="text-neutral-600 dark:text-neutral-200">
+                  Carta
+                </Link>
+              </p>
+              <p className="mb-4">
+                <Link to="/home/reservaMesa" className="text-neutral-600 dark:text-neutral-200">
+                  Reserva de Mesa
+                </Link>
+              </p>
+              <p className="mb-4">
+                <Link to="/home/contactanos" className="text-neutral-600 dark:text-neutral-200">
+                  Contactanos
+                </Link>
               </p>
             </div>
 
-            <div>
-              <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
-                Products
-              </h6>
-              <p className="mb-4">
-                <a href="#!" className="text-neutral-600 dark:text-neutral-200">
-                  Angular
-                </a>
-              </p>
-              <p className="mb-4">
-                <a href="#!" className="text-neutral-600 dark:text-neutral-200">
-                  React
-                </a>
-              </p>
-              <p className="mb-4">
-                <a href="#!" className="text-neutral-600 dark:text-neutral-200">
-                  Vue
-                </a>
-              </p>
-              <p>
-                <a href="#!" className="text-neutral-600 dark:text-neutral-200">
-                  Laravel
-                </a>
-              </p>
-            </div>
-
-            <div>
-              <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
-                Useful links
-              </h6>
-              <p className="mb-4">
-                <a href="#!" className="text-neutral-600 dark:text-neutral-200">
-                  Pricing
-                </a>
-              </p>
-              <p className="mb-4">
-                <a href="#!" className="text-neutral-600 dark:text-neutral-200">
-                  Settings
-                </a>
-              </p>
-              <p className="mb-4">
-                <a href="#!" className="text-neutral-600 dark:text-neutral-200">
-                  Orders
-                </a>
-              </p>
-              <p>
-                <a href="#!" className="text-neutral-600 dark:text-neutral-200">
-                  Help
-                </a>
-              </p>
-            </div>
-
-            <div>
-              <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
-                Contact
-              </h6>
-              <p className="mb-4 flex items-center justify-center md:justify-start">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  className="mr-3 h-5 w-5"
-                  viewBox="0 0 24 24">
-                  <path
-                    d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" />
-                </svg>
-                New York, NY 10012, US
-              </p>
-              <p className="mb-4 flex items-center justify-center md:justify-start">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  className="mr-3 h-5 w-5"
-                  viewBox="0 0 24 24">
-                  <path
-                    d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" />
-                </svg>
-                info@example.com
-              </p>
-              <p className="mb-4 flex items-center justify-center md:justify-start">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  className="mr-3 h-5 w-5"
-                  viewBox="0 0 24 24">
-                  <path
-                    d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" />
-                </svg>
-                + 01 234 567 88
-              </p>
-              <p className="flex items-center justify-center md:justify-start">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  className="mr-3 h-5 w-5"
-                  viewBox="0 0 24 24">
-                  <path
-                    d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" />
-                </svg>
-                + 01 234 567 89
-              </p>
+            <div className="text-center md:text-right">
+              <h6 className="mb-4 font-semibold uppercase">Contacto</h6>
+              <div className="space-y-2">
+                <p>Lima, Perú</p>
+                <p>D'Peñas@gmail.com</p>
+                <p>+51 01 234 5678</p>
+                <p>+51 01 234 5679</p>
+              </div>
             </div>
           </div>
         </div>
         <div className="text-center p-6 bg-black text-white dark:bg-black dark:text-white">
-          <span>© 2024 Copyright:</span>
-          <a
-            className="text-neutral-600 dark:text-neutral-400"
-            href="https://tailwind-elements.com/"
-          >MDBootstrap.com</a
-          >
+          <span>© 2024 Derechos Reservados:</span>
+          <a className="text-neutral-600 dark:text-neutral-400" href="https://technologyplus.pe/"> D'Peñas</a>
         </div>
       </footer>
     </>
   );
-}
+};
 
 export default Footer;
