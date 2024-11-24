@@ -7,13 +7,13 @@ const FormularioReservacion = () => {
   const [errores, setErrores] = useState({});
   const navigate = useNavigate();
 
-    const handleSiguiente = () => {
-        navigate('/home/reservaMesa/confirmacion');     
-    };
+  const handleSiguiente = () => {
+    navigate('/home/reservaMesa/confirmacion');
+  };
 
-    const handleAnterior = () => {
-        navigate('/home/reservaMesa/numeroMesas');
-    };
+  const handleAnterior = () => {
+    navigate('/home/reservaMesa/numeroMesas');
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,12 +33,13 @@ const FormularioReservacion = () => {
     } else {
       setErrores({});
       console.log("Formulario enviado:", { requerimiento, restriccion });
+      handleSiguiente();
     }
   };
 
   return (
-    <div className="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold text-center mb-6">Formulario de Reservación</h2>
+    <div className="p-8 bg-orange-800 text-center">
+      <h2 className="text-2xl font-bold text-white text-center mb-6">Formulario de Reservación</h2>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
@@ -49,7 +50,7 @@ const FormularioReservacion = () => {
             id="requerimiento"
             value={requerimiento}
             onChange={(e) => setRequerimiento(e.target.value)}
-            className={`w-full p-3 border ${errores.requerimiento ? "border-red-500" : "border-gray-300"
+            className={`w-[500px] p-3 border ${errores.requerimiento ? "border-red-500" : "border-gray-300"
               } rounded-lg shadow-sm focus:outline-none focus:ring-2 ${errores.requerimiento ? "focus:ring-red-500" : "focus:ring-orange-500"
               }`}
           >
@@ -60,7 +61,7 @@ const FormularioReservacion = () => {
             <option value="otros">Otros</option>
           </select>
           {errores.requerimiento && (
-            <p className="text-red-500 text-sm mt-1">{errores.requerimiento}</p>
+            <p className="text-black font-bold text-sm mt-1">{errores.requerimiento}</p>
           )}
         </div>
 
@@ -73,33 +74,31 @@ const FormularioReservacion = () => {
             value={restriccion}
             onChange={(e) => setRestriccion(e.target.value)}
             placeholder="Escribe aquí si hay alguna restricción..."
-            className={`w-full p-3 border ${errores.restriccion ? "border-red-500" : "border-gray-300"
+            className={`w-[500px] p-3 border ${errores.restriccion ? "border-red-500" : "border-gray-300"
               } rounded-lg shadow-sm focus:outline-none focus:ring-2 ${errores.restriccion ? "focus:ring-red-500" : "focus:ring-orange-500"
               }`}
             rows="4"
           ></textarea>
           {errores.restriccion && (
-            <p className="text-red-500 text-sm mt-1">{errores.restriccion}</p>
+            <p className="text-black font-bold text-sm mt-1">{errores.restriccion}</p>
           )}
         </div>
 
-        <div className="text-center">
-                <button
+        <div className="text-center space-x-4">
+          <button
             onClick={handleAnterior}
-            className="select-none rounded-lg bg-gray-900 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            className="select-none rounded-lg bg-black py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
             type="button"
+          >
+            Anterior
+          </button>
 
-            >
-                Anterior
-            </button>
-            <button
-                onClick={handleSiguiente}
-                className="select-none rounded-lg bg-gray-900 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                type="button"
-
-            >
-                Siguiente
-            </button>
+          <button
+            className="select-none rounded-lg bg-black py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            type="submit"
+          >
+            Siguiente
+          </button>
         </div>
       </form>
     </div>

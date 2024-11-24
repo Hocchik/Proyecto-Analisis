@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 
-const SteeperReserva = ({paso}) => {
+const SteeperReserva = ({ paso }) => {
   const [pasoActual, setPasoActual] = useState(1);
 
-  
-  // Nombres y descripciones de los pasos
   const pasos = [
     { nombre: "Cantidad de Personas", descripcion: "Completa tus datos personales." },
     { nombre: "Fecha y Hora", descripcion: "Selecciona la fecha y hora." },
@@ -27,11 +25,11 @@ const SteeperReserva = ({paso}) => {
   };
 
   return (
-    <div className="w-full px-24 py-4 mt-20">
+    <div className="w-full bg-orange-800 px-24 py-4 mt-16">
       <div className="relative flex items-center justify-between w-full">
-        <div className="absolute left-0 top-2/4 h-0.5 w-full -translate-y-2/4 bg-gray-300"></div>
+        <div className="absolute left-0 top-2/4 h-0.5 w-full -translate-y-2/4 bg-white"></div>
         <div
-          className={`absolute left-0 top-2/4 h-0.5 w-full -translate-y-2/4 ${pasoActual === pasos.length ? "bg-blue-900" : "bg-gray-900"
+          className={`absolute left-0 top-2/4 h-0.5 w-full -translate-y-2/4 ${pasoActual === pasos.length ? "bg-black" : "bg-gray-900"
             } transition-all duration-500`}
         ></div>
 
@@ -40,7 +38,7 @@ const SteeperReserva = ({paso}) => {
           return (
             <div
               key={pasoNumero}
-              className={`relative z-10 grid w-10 h-10 font-bold text-white transition-all duration-300 ${pasoNumero <= pasoActual ? "bg-blue-900" : "bg-gray-300"
+              className={`relative z-10 grid w-10 h-10 font-bold text-white transition-all duration-300 ${pasoNumero <= pasoActual ? "bg-black" : "bg-gray-300"
                 } rounded-full place-items-center`}
             >
               <svg
@@ -60,10 +58,10 @@ const SteeperReserva = ({paso}) => {
               </svg>
 
               <div className="absolute -bottom-[4.5rem] w-max text-center">
-                <h6 className="block font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-gray-700">
+                <h6 className="block font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-black">
                   {paso.nombre}
                 </h6>
-                <p className="block font-sans text-sm antialiased font-normal leading-relaxed text-gray-700">
+                <p className="block font-sans text-sm antialiased font-normal leading-relaxed text-black">
                   {paso.descripcion}
                 </p>
               </div>
@@ -71,7 +69,7 @@ const SteeperReserva = ({paso}) => {
           );
         })}
       </div>
-      <Outlet/>
+      <Outlet />
 
       <div className="flex justify-between mt-32">
         <button
