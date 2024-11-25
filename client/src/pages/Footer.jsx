@@ -8,10 +8,10 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="bg-black text-white text-center dark:bg-black dark:text-white lg:text-left">
+      <footer className="bg-white text-black text-center lg:text-left">
         <div className="flex items-center justify-center border-b-2 border-neutral-200 p-6 dark:border-white/10 lg:justify-between">
           <div className="me-12 hidden lg:block">
-            <span>Conéctate con nosotros en nuestras redes sociales:</span>
+            <span className='text-black font-bold'>Conéctate con nosotros en nuestras redes sociales:</span>
           </div>
           <div className="flex justify-center">
             <a href="#!" className="me-6 [&>svg]:h-4 [&>svg]:w-4">
@@ -74,37 +74,37 @@ const Footer = () => {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
 
             <div>
-              <h6 className="mb-4 font-semibold uppercase">D'Peñas</h6>
-              <p>
+              <h6 className="mb-4  uppercase text-black font-bold">D'Peñas</h6>
+              <p className='text-black'>
                 Reserva tu mesa fácilmente y disfruta de los sabores más frescos y auténticos de nuestra cocina peruana. Con nuestro sistema de reservas en línea, asegurar tu lugar nunca fue tan sencillo. Ven y vive una experiencia gastronómica única, con un servicio de calidad y un ambiente acogedor para disfrutar en familia o con amigos.              </p>
             </div>
 
             <div className="text-center md:text-center md:col-start-2">
-              <h6 className="mb-4 font-semibold uppercase">Enlaces útiles</h6>
+              <h6 className="mb-4 font-bold uppercase text-black">Enlaces útiles</h6>
               <p className="mb-4">
-                <Link to="/home" className="text-neutral-600 dark:text-neutral-200">
+                <Link to="/home" className="text-black ">
                   Home
                 </Link>
               </p>
               <p className="mb-4">
-                <Link to="/home/carta/ceviches" className="text-neutral-600 dark:text-neutral-200">
+                <Link to="/home/carta/ceviches" className="text-black ">
                   Carta
                 </Link>
               </p>
               <p className="mb-4">
-                <Link to="/home/reservaMesa" className="text-neutral-600 dark:text-neutral-200">
+                <Link to="/home/reservaMesa" className="text-black">
                   Reserva de Mesa
                 </Link>
               </p>
               <p className="mb-4">
-                <Link to="/home/contactanos" className="text-neutral-600 dark:text-neutral-200">
+                <Link to="/home/contactanos" className="text-black">
                   Contactanos
                 </Link>
               </p>
             </div>
 
             <div className="text-center md:text-right">
-              <h6 className="mb-4 font-semibold uppercase">Contacto</h6>
+              <h6 className="mb-4 font-bold text-black uppercase">Contacto</h6>
               <div className="space-y-2">
                 <p>Lima, Perú</p>
                 <p>D'Peñas@gmail.com</p>
@@ -114,9 +114,9 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="text-center p-6 bg-black text-white dark:bg-black dark:text-white">
+        <div className="text-center p-6 bg-amber-700 text-white ">
           <span>© 2024 Derechos Reservados:</span>
-          <a className="text-neutral-600 dark:text-neutral-400" href="https://technologyplus.pe/"> D'Peñas</a>
+          <a className="text-white" href="https://technologyplus.pe/"> D'Peñas</a>
         </div>
       </footer>
     </>
