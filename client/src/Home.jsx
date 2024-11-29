@@ -20,7 +20,7 @@ const Home = () => {
 
     return (
         <>
-            {isLoggedIn ? <Header2 /> : <Header />}
+            {isLoggedIn ? <Header /> : <Header />}
 
             <Routes>
                 <Route path="/reservaMesa/*" element={<ReservaMesa />} />
