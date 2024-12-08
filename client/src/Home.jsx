@@ -13,14 +13,13 @@ const Home = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
-
         const userLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
         setIsLoggedIn(userLoggedIn);
     }, []);
 
     return (
         <>
-            {isLoggedIn ? <Header /> : <Header />}
+            {isLoggedIn ? <Header2 /> : <Header />}
 
             <Routes>
                 <Route path="/reservaMesa/*" element={<ReservaMesa />} />
