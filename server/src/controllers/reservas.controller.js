@@ -11,8 +11,8 @@ export const getReservacion = async (req, res) =>{
     const pool = await getConnection();
     
     const result = await pool.request()
-    .input('ReservacionID',  sql.Int, req.params.id)
-    .query('Select * from Reserva where ReservacionID = @ReservacionID')
+    .input('ReservaID',  sql.Int, req.params.id)
+    .query('Select * from Reserva where ReservaID = @ReservaID')
 
     res.json(result);
     console.log(result)
@@ -47,34 +47,36 @@ export const putReservacion = async (req, res) =>{
     console.log(req.body);
     const pool = await getConnection();
     const result = await pool.request()
-    .input('ReservacionID', sql.Int, req.params.id)
-    .input('MesaID', sql.Int, req.body.MesaID)
-    .input('FechaReservacion', sql.DateTime, req.body.FechaReservacion)
+    .input('ReservaID', sql.Int, req.params.id)
     .input('ClienteID', sql.Int, req.body.ClienteID)
-    .input('Observaciones', sql.VarChar, req.body.Observaciones)
-    .query('Update Reserva set MesaID= @MesaID, FechaReservacion = @FechaReservacion, ClienteID= @ClienteID, Observaciones= @Observaciones where ReservacionID = @ReservacionID')
+    .input('MesaID', sql.Int, req.body.MesaID)
+    .input('FechaReserva', sql.NVarChar, req.body.FechaReserva)
+    .input('HorarioID', sql.NVarChar, req.body.HorarioID)
+    .input('Estado', sql.NVarChar, req.body.Estado)
+    .query('Update Reserva set ClienteID= @ClienteID, MesaID = @MesaID, FechaReserva= @FechaReserva, HorarioID= @HorarioID, Estado= @Estado where ReservaID = @ReservaID')
     
     if(result.rowsAffected[0] === 0){
-        return res.status(404).json({message:'Reservacion no encontrada'})
+        return res.status(404).json({message:'Reserva no encontrada'})
     }
 
     res.json({
-        ReservacionID: req.params.id,
-        MesaID: req.body.MesaID,
-        FechaReservacion: req.body.FechaReservacion,
+        ReservaID: req.params.id,
         ClienteID: req.body.ClienteID,
-        Observaciones: req.body.Observaciones
+        MesaID: req.body.MesaID,
+        FechaReserva: req.body.FechaReserva,
+        HorarioID: req.body.HorarioID,
+        Estado: req.body.Estado
     })
 }
 
 export const deleteReservacion = async (req, res) =>{
     const pool = await getConnection();
     const result = await pool.request()
-    .input('ReservacionID',  sql.Int, req.params.id)
-    .query('Delete from Reservaciones where ReservacionID = @ReservacionID')
+    .input('ReservaID',  sql.Int, req.params.id)
+    .query('Delete from Reserva where ReservaID = @ReservanID')
     console.log(result)
     if(result.rowsAffected[0] === 0){
-        return res.status(404).json({message:'Reservacion no encontrada'})
+        return res.status(404).json({message:'Reserva no encontrada'})
     }
     return res.json({message:'Reservacion eliminada con exito'})
 }

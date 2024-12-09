@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getPlatillos, getPlatillo, createPlatillo, updatePlatillo, deletePlatillo } from "../controllers/platillos.controller"
+import { getPlatillos, getPlatillo, createPlatillo, updatePlatillo, deletePlatillo } from "../controllers/platillos.controller.js"
 
 const router = Router();
 

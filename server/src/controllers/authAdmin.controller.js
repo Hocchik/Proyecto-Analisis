@@ -1,82 +1,70 @@
-import Admin from "../../models/admin.model.js";
-import bcrypt from "bcryptjs";
-import {createAccessToken} from "../../libs/jwt.js";
-import jwt from "jsonwebtoken";
-import { TOKEN_SECRET } from "../../config.js";
+import { getConnection } from "../database/connection.js";
+import {createAccessToken} from "../libs/jwt.js";
+import sql from 'mssql'
 
 export const register = async (req, res) => {
-    const{code, password, username} = req.body;
+    const{Codigo, Nombre, Apellido, Contrasena} = req.body;
+    const pool = await getConnection();
+    try {
+        const AdminFound = await pool.request()
+        .input('Codigo', sql.NVarChar, Codigo)
+        .input('Contrasena', sql.NVarChar, Contrasena)
+        .query('Select * from Administrador where Codigo = @Codigo and Contrasena = @Contrasena')
 
-    try{
+        if(AdminFound){
+            return res.status(200).json({message: 'Admin already exists'})
+        }
 
-        const AdminFound = await Admin.findOne({code});
-        if(AdminFound) 
-            return res.status(400).json(['The email is already in use'])
+        const result = await pool.request()
+        .input('Codigo', sql.NVarChar, Codigo)
+        .input('Nombre', sql.NVarChar, Nombre)
+        .input('Apellido', sql.NVarChar, Apellido)
+        .input('Contrasena', sql.NVarChar, Contrasena)
+        .query('INSERT INTO Clientes (Codigo, Nombre, Apellido, Contrasena) VALUES (@Codigo, @Nombre, @Apellido, @Contrasena)')
 
+        console.log(result)
 
-        const passwordHash= await bcrypt.hash(password, 10);
-        //Esto genera un String cualquiera :3
-
-        const newAdmin = new Admin({
-            username,
-            code,
-            password : passwordHash,
-        });
+        const token = await createAccessToken({ id: result.AdministradorID });
     
-
-        console.log(newAdmin);
-        const AdminSaved = await newAdmin.save();
-        
-        /* Problemas Aquí */
-        const token = await createAccessToken({ id: AdminSaved._id });
-        
         res.cookie("token", token);
-        
+
         res.json({
-            id: AdminSaved._id,
-            username: AdminSaved.username,
-            code: AdminSaved.code,
-            createdAt: AdminSaved.createdAt,
-            updatedAt: AdminSaved.updatedAt,
-        });
+            AdminID: result.recordset[0].AdminID,
+            Nombre: Nombre,
+            Apellido: Apellido,
+        })
 
-
-    }catch(error){
+    } catch (error) {
         res.status(500).json({ message: error.message });
     }
 }
 
 export const login = async (req, res) => {
-/* Puedo colocar en lugar de Email, username */
-const{ code, password } = req.body;
+    const { Codigo, Contrasena } = req.body;
 
-try{
+    const pool = await getConnection();
 
-    const AdminFound = await Admin.findOne({code}) /* Aqui tmb se cambiaria a username */
-    if(!AdminFound) return res.status(400).json({ message: "User not found"});
+    try {
+        const AdminFound = await pool.request()
+        .input('Codigo', sql.NVarChar, Codigo)
+        .input('Contrasena', sql.NVarChar, Contrasena)
+        .query('Select * from Administrador where Codigo = @Codigo and Contrasena = @Contrasena')
+        if(!AdminFound){
+            return res.status(404).json({message: 'Admin not found'})
+        }
+        const token = await createAccessToken({ id: UserFound.AdministradorID });
 
-    const isMatch= await bcrypt.compare(password, AdminFound.password);
-    if(!isMatch) return res.status(400).json({ message: "Incorrect Password"});
+        res.cookie("token", token);
+        
+        res.json({
+            AdminID: result.recordset[0].AdminID,
+            Nombre: Nombre,
+            Apellido: Apellido,
+        })
 
-
-    /* Problemas Aquí */
-    const token = await createAccessToken({ id: AdminFound._id });
-    
-    res.cookie("token", token);
-    
-    res.json({
-        id: AdminFound._id,
-        username: AdminFound.username,
-        code: AdminFound.code,
-        createdAt: AdminFound.createdAt,
-        updatedAt: AdminFound.updatedAt,
-    });
-
-
-}catch(error){
-    res.status(500).json({ message: error.message });
-}
-
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
 };
 
 export const logout = async (req, res) => {
@@ -87,35 +75,47 @@ export const logout = async (req, res) => {
 } 
 
 export const profile = async (req, res) => {
-    const AdminFound = await Admin.findById(req.Admin.id);
-    if(!AdminFound)  return res.status(400).json({message: "User not found"});
+    const {AdministradorID} = req.body
+
+    const pool = await getConnection();
     
-    return res.json({
-        id: AdminFound._id,
-        username: AdminFound.username,
-        code: AdminFound.code,
-        createdAt: AdminFound.createdAt,
-        updatedAt: AdminFound.updatedAt,
-    })
-    res.send('profile');
+    try {
+        const AdminFound = await pool.request()
+        .input('AdministradorID', sql.NVarChar, AdministradorID)
+        .query('Select * from Administrador where AdministradorID = @AdministradorID')
+
+        if(!AdminFound){
+            return res.status(404).json({message: 'User not found'})
+        }
+
+        return res.json({
+            AdminID: AdminFound.recordset[0].AdminID,
+            Codigo: AdminFound.recordset[0].Codigo,
+            Nombre: AdminFound.recordset[0].Nombre,
+            Apellido: AdminFound.recordset[0].Apellido,
+        })
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 export const verifyToken = async (req, res) => {
-    const {token}= req.cookies
-        if(!token) return res.status(401).json({message: 'Unauthorized'})
+    const {token} =req.cookies
+    if(!token)  return res.status(401).json({message: 'Unauthorized'})
 
-        jwt.verify(token, TOKEN_SECRET, async (err, admin) => {
+        const pool = await getConnection();
+
+        jwt.verify(token, TOKEN_SECRET, async (err, ClienteID) => {
             if(err) return res.status(401).json({message: 'Unauthorized'}) 
-                const AdminFound = await Admin.findById(admin.id) 
+                const AdminFound = await pool.request()
+            .input('AdministradorID', sql.NVarChar, AdministradorID)
+            .query('Select * from Administrador where AdministradorID = @AdministradorID')
 
             if(!AdminFound) return res.status(401).json({message: 'Unauthorized'}) 
 
                 return res.json({
-                    id: AdminFound._id,
-                    username: AdminFound.username,
-                    code: AdminFound.code,
+                    AdministradorID: AdminFound.recordset[0].AdministradorID,
+                    Codigo: AdminFound.recordset[0].Codigo,
                 })
-
         })
-
 }

@@ -3,7 +3,5 @@ import {getConnection} from './database/connection.js'
 
 getConnection();
 
-
-
-app.listen(procces.env.PORT || 3000);
-console.log('Server on port', procces.env.PORT || 3000);
+app.listen(/* procces.env.PORT || */ 3000);
+console.log('Server on port', /* procces.env.PORT || */ 3000);

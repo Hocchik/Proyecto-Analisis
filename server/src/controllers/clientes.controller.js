@@ -35,7 +35,8 @@ export const createCliente = async (req, res) => {
         .input('Apellido', sql.NVarChar, req.body.Apellido)
         .input('Correo', sql.NVarChar, req.body.Correo)
         .input('Telefono', sql.NVarChar, req.body.Telefono)
-        .query('Insert into Reservaciones (Nombre, Apellido, Correo, Telefono) values (@Nombre, @Apellido, @Correo, @Telefono); Select SCOPE_IDENTITY() as ClienteID')
+        .input('Contrasena', sql.NVarChar, req.body.Contrasena)
+        .query('Insert into Clientes (Nombre, Apellido, Correo, Telefono, Contrasena) values (@Nombre, @Apellido, @Correo, @Telefono, @Contrasena); Select SCOPE_IDENTITY() as ClienteID')
         console.log(result)
         res.json({
             id: result.recordset[0].ClienteID,
@@ -59,7 +60,8 @@ export const updateCliente = async (req, res) => {
         .input('Apellido', sql.NVarChar, req.body.Apellido)
         .input('Correo', sql.NVarChar, req.body.Correo)
         .input('Telefono', sql.NVarChar, req.body.Telefono)
-        .query('Update Clientes set Nombre = @Nombre, Apellido = @Apellido, Correo = @Correo, Telefono = @Telefono where ClienteID = @ClienteID')
+        .input('Contrasena', sql.NVarChar, req.body.Contrasena)
+        .query('Update Clientes set Nombre = @Nombre, Apellido = @Apellido, Correo = @Correo, Telefono = @Telefono, Contrasena = @Contrasena where ClienteID = @ClienteID')
         if(result.rowsAffected[0] === 0){
             return res.status(404).json({message:'Cliente no encontrado'})
         }
@@ -68,7 +70,8 @@ export const updateCliente = async (req, res) => {
             Nombre: req.body.Nombre,
             Apellido: req.body.Apellido,
             Correo: req.body.Correo,
-            Telefono: req.body.Telefono
+            Telefono: req.body.Telefono,
+            Contrasena: req.body.Contrasena
         })
     } catch (error) {
         console.log(error)
