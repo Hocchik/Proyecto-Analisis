@@ -11,7 +11,9 @@ const Login = () => {
         console.log('Email:', email);
         console.log('Password:', password);
 
-        // Simulación de autenticación exitosa
+
+        localStorage.setItem('userLoggedIn', 'true');
+
         navigate('/');
     };
 

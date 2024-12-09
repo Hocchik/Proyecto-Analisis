@@ -5,11 +5,10 @@ const FormularioReservacion = () => {
   const [requerimiento, setRequerimiento] = useState("");
   const [restriccion, setRestriccion] = useState("");
   const [errores, setErrores] = useState({});
+  const [modalVisible, setModalVisible] = useState(false);
   const navigate = useNavigate();
 
-  const handleSiguiente = () => {
-    navigate('/home/reservaMesa/confirmacion');
-  };
+
 
   const handleAnterior = () => {
     navigate('/home/reservaMesa/numeroMesas');
@@ -33,9 +32,15 @@ const FormularioReservacion = () => {
     } else {
       setErrores({});
       console.log("Formulario enviado:", { requerimiento, restriccion });
-      handleSiguiente();
+      setModalVisible(true);
+      setTimeout(() => {
+        setModalVisible(false);
+        navigate('/home');
+      }, 2000);
     }
   };
+
+
 
   return (
     <div className="p-8 bg-orange-800 text-center">
@@ -97,10 +102,22 @@ const FormularioReservacion = () => {
             className="select-none rounded-lg bg-black py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
             type="submit"
           >
-            Siguiente
+            Confirmar
           </button>
         </div>
       </form>
+
+      {modalVisible && (
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
+          <div className="bg-white p-8 rounded-lg text-center">
+            <svg className="w-16 h-16 text-green-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <h2 className="text-xl font-bold mt-4">Reserva realizada</h2>
+
+          </div>
+        </div>
+      )}
     </div>
   );
 };
